@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- BANNER ADDING -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner ">
+                <div class="banner-text">
+                    <h1><b>TODO APP</b></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- FORM  -->
+<div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 ">
+                <div class="card">
+                    <div class="card-header text-white bg-dark">
+                        <h4 class="mb-0">To-Do List</h4>
+                    </div>
+                    <div class="card-body ">
+                        <form method="POST" class="shadow p-3" >
+                            {% csrf_token %}
+                            <div class="form-group shadow">
+                                <input type="text" class="form-control shadow" name="task" id="task" placeholder="Enter a new task" required><br>
+                                <input type="text" class="form-control shadow" name="priority" placeholder="Enter your priority "><br>
+                                <input type="date" class="form-control shadow" name="date" placeholder="Enter the date"><br>
+                            </div>
+                            <button type="submit" class="btn btn-outline-dark  btn-block shadow">Add Task</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+          
+                <div class="col-md-6  ">
+                    <!-- <h1 class="text-white ">TASK LIST</h1> -->
+                    {% for i in task1 %}
+                    <div class="card">
+                        <div class="card-header text-white bg-dark" >
+                            <h4 class="mb-0">TASK</h4>
+                        </div>
+                        <div class="card-body  shadow-lg">
+                            <!-- Add your to-do items here -->
+                            <ul class="list-group shadow">
+                                <li class="list-group-item shadow  bg-white rounded">{{i.name }}</li><br>
+                                <li class="list-group-item shadow bg-white rounded">{{i.priority }}</li><br>
+                                <li class="list-group-item shadow bg-white rounded">{{i.date }}</li><br>
+                            </ul>
+                            
+                                <a class="btn btn-secondary p-2 ml-5" href="{% url 'update' i.id %}">UPDATE</a>
+                                <a class="btn btn-dark p-2 ml-2" href="{% url 'delete' i.id %}">DONE</a>     
+                            
+                            
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    {% endfor %}
+                    
+                </div>
+        </div>
+    </div>
+
+{% endblock %}

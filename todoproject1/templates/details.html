@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header text-white bg-dark" >
+        <h4 class="mb-0">TASK</h4>
+    </div>
+    <div class="card-body  shadow-lg">
+        <!-- Add your to-do items here -->
+        <ul class="list-group shadow">
+            <li class="list-group-item shadow  bg-white rounded">{{task1.name }}</li><br>
+            <li class="list-group-item shadow bg-white rounded">{{task1.priority }}</li><br>
+            <li class="list-group-item shadow bg-white rounded">{{task1.date }}</li><br>
+        </ul>
+        
+            <a class="btn btn-secondary p-2 ml-5" href="{% url 'update' task1.id %}">UPDATE</a>
+            <a class="btn btn-dark p-2 ml-2" href="{% url 'delete' task1.id %}">DONE</a>     
+        
+        
+    </div>
+</div>
+
+{% endblock %}

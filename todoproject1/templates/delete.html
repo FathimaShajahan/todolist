@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-card mt-3">
+<form method="POST">
+    {% csrf_token %}
+   <B><H4> ARE YOU SURE THIS TASK IS DONE ?</H4></B>
+   <input type="submit">
+</form>
+</div>
+{% endblock %}
